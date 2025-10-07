@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Brain Tumor Analyzer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #bbdefb);
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #0d6efd;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .upload-box {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+            padding: 30px 40px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        input[type="file"] {
+            font-size: 1rem;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #0d6efd;
+            width: 100%;
+        }
+
+        button {
+            background-color: #0d6efd;
+            color: white;
+            padding: 14px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 12px;
+            margin-top: 25px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0843b8;
+        }
+
+        .results {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .results h2 {
+            color: #0d6efd;
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .image-box {
+            background: #dbe9ff;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+            padding: 15px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .image-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(13, 110, 253, 0.5);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .image-box h4 {
+            color: #0d6efd;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .image-box p {
+            margin: 4px 0;
+            font-size: 1rem;
+            color: #094a8f;
+            font-weight: 600;
+        }
+
+        .summary-box {
+            max-width: 600px;
+            background: #dbe9ff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+            padding: 25px 30px;
+            margin: 40px auto 0;
+            text-align: left;
+            color: #094a8f;
+            font-weight: 600;
+        }
+
+        .summary-box h3 {
+            color: #0d6efd;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .summary-box p {
+            font-size: 1.1rem;
+            margin: 6px 0;
+        }
+
+        @media (max-width: 600px) {
+            .image-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .image-box {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Brain Tumor Analyzer</h1>
+
+    <div class="upload-box">
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" multiple required />
+            <button type="submit">Analyze</button>
+        </form>
+    </div>
+
+    {% if results %}
+    <div class="results">
+        <h2>Analysis Results</h2>
+        <div class="image-grid">
+            {% for r in results %}
+            <div class="image-box">
+                <img src="{{ r.filepath }}" alt="{{ r.filename }}" />
+                <h4 title="{{ r.filename }}">{{ r.filename }}</h4>
+                <p><strong>Diagnosis:</strong> {{ r.result }}</p>
+                <p><strong>Confidence:</strong> {{ r.confidence }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="summary-box">
+            <h3>Summary</h3>
+            <p><strong>Total Images:</strong> {{ summary.total }}</p>
+            <p><strong>No Tumor:</strong> {{ summary.no_tumor }}</p>
+            {% for tumor, count in summary.tumors.items() %}
+            <p><strong>{{ tumor }}:</strong> {{ count }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>
