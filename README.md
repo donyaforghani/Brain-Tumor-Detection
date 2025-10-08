@@ -1,4 +1,3 @@
-
 # 🧠 Brain Tumor Detection  
 
 ### Deep Learning–Based MRI Classification Using Dual-Stage CNN Architecture  
@@ -12,6 +11,8 @@ The project consists of **two sequential models** that work together:
 
 1. **View Classification Model (Model 1)** — identifies the MRI view type.  
 2. **Final Tumor Detection Model (Model 2)** — classifies the tumor type using both the MRI image and the extracted view features from Model 1.  
+
+<img src="result_image/output-result.png" width="300"> <img src="result_image/random_detecte.png" width="700">
 
 ---
 
@@ -111,13 +112,15 @@ This project uses a **publicly available MRI dataset** from Kaggle:
 
 ## 📈 Performance Metrics  
 
-| Metric | Model 1 (View) | Model 2 (Tumor) |
-|---------|----------------|----------------|
-| **Accuracy** | 97.8% | 97.3% |
-| **Precision** | — | 96.8% |
-| **Recall** | — | 95.9% |
-| **F1-score** | — | 96.3% |
-| **ROC-AUC** | — | 0.982 |
+|           | precision | recall | f1-score | support |
+|-----------|-----------|--------|----------|---------|
+| 0         | 0.96      | 0.91   | 0.94     | 264     |
+| 1         | 0.91      | 0.92   | 0.91     | 268     |
+| 2         | 0.99      | 0.99   | 0.99     | 319     |
+| 3         | 0.95      | 0.99   | 0.97     | 292     |
+| accuracy  |           |        | 0.95     | 1143    |
+| macro avg | 0.95      | 0.95   | 0.95     | 1143    |
+| weighted avg | 0.95   | 0.95   | 0.95     | 1143
 
 > These metrics demonstrate strong model performance and class balance.  
 > The integration of view-based features significantly improved recall and F1-score compared to using image data alone.
@@ -125,10 +128,8 @@ This project uses a **publicly available MRI dataset** from Kaggle:
 🧾 **Visual Results Placeholder:**  
 _Add here confusion matrix and ROC-AUC plot images after training._
 
-```markdown
-![Confusion Matrix](results/confusion_matrix.png)
-![ROC Curve](results/roc_auc.png)
-```
+
+<img src="result_image/matrix.png" width="400"> <img src="result_image/RUC.png" width="400">
 
 ---
 
@@ -154,8 +155,7 @@ Then open in your browser:
 *Add a screenshot of your Flask interface here.*
 
 
-![Flask App UI](result_image/Annotation 2025-10-08 110038.png)
-<img src="[result_image/Annotation 2025-10-08 110038.png]">
+<img src="result_image/UI.jpg">
 
 
 ---
