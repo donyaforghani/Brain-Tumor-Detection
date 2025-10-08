@@ -12,7 +12,7 @@ The project consists of **two sequential models** that work together:
 1. **View Classification Model (Model 1)** — identifies the MRI view type.  
 2. **Final Tumor Detection Model (Model 2)** — classifies the tumor type using both the MRI image and the extracted view features from Model 1.  
 
-<img src="result_image/output-result.png" width="300"> <img src="result_image/random_detecte.png" width="700">
+<img src="result_image/output-result.png" width="250"> <img src="result_image/random_detecte.png" width="500">
 
 ---
 
