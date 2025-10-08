@@ -215,8 +215,8 @@ flask
 
 ---
 
-✳️ **Developed by:** Your Name
+✳️ **Developed by:** Donya Forghani
 📅 **Year:** 2025
-📍 **Repository:** [Brain Tumor Detection](https://github.com/yourusername/Brain-Tumor-Detection)
+📍 **Repository:** [Brain Tumor Detection](https://github.com/donyaforghani/Brain-Tumor-Detection)
 
 ```
