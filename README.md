@@ -126,7 +126,6 @@ This project uses a **publicly available MRI dataset** from Kaggle:
 > The integration of view-based features significantly improved recall and F1-score compared to using image data alone.
 
 🧾 **Visual Results Placeholder:**  
-_Add here confusion matrix and ROC-AUC plot images after training._
 
 
 <img src="result_image/matrix.png" width="400"> <img src="result_image/RUC.png" width="400">
@@ -152,7 +151,6 @@ Then open in your browser:
 👉 [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 📷 **UI Screenshot Placeholder:**
-*Add a screenshot of your Flask interface here.*
 
 
 <img src="result_image/UI.jpg">
